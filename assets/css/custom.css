@@ -363,3 +363,8 @@ video {
   height: 100%;
   border: 0;
 }
+/* Ocultar logo del encabezado */
+.site-logo,
+.site-title img {
+  display: none !important;
+}

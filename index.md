@@ -45,5 +45,5 @@ Además de mantener mis trabajos organizados, este espacio permitirá observar m
 
 Contenido:
 - [Semana 1:Portafolio web](01-portafolio-web.md)
-  
+  - [Semana 1: Portafolio web]({{ '/01-portafolio-web.html' | relative_url }})
 

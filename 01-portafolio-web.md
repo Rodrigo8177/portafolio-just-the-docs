@@ -43,6 +43,29 @@ Se realizaron modificaciones en los archivos Markdown y CSS para personalizar ta
 
 ![Modificación del código]({{ '/assets/img/semana1/codigo.png' | relative_url }})
 
+## Evidencias
+
+### Captura 1
+![Captura 1]({{ '/assets/img/semana1/captura1.png' | relative_url }})
+
+### Captura 2
+![Captura 2]({{ '/assets/img/semana1/captura2.png' | relative_url }})
+
+### Captura 3
+![Captura 3]({{ '/assets/img/semana1/captura3.png' | relative_url }})
+
+### Captura 4
+![Captura 4]({{ '/assets/img/semana1/captura4.png' | relative_url }})
+
+### Captura 5
+![Captura 5]({{ '/assets/img/semana1/captura5.png' | relative_url }})
+
+### Captura 6
+![Captura 6]({{ '/assets/img/semana1/captura6.png' | relative_url }})
+
+### Captura 7
+![Captura 7]({{ '/assets/img/semana1/captura7.png' | relative_url }})
+
 ### Resultado del portafolio
 
 Finalmente, se verificó el funcionamiento de la página publicada mediante GitHub Pages.

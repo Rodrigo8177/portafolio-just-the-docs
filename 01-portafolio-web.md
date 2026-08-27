@@ -27,7 +27,8 @@ Entre los principales cambios realizados se encuentran:
 - Personalización del menú lateral.
 - Cambio de la paleta de colores original por una escala de grises.
 - Modificación del nombre del portafolio.
-- Publicación y actualización del sitio mediante GitHub Pages.
+- Publicación y 
+actualización del sitio mediante GitHub Pages.
 
 ## Evidencias
 
@@ -46,8 +47,8 @@ Se realizaron modificaciones en los archivos Markdown y CSS para personalizar ta
 ## Evidencias
 
 ### Captura 1
-![Captura 1]({{ '/assets/img/semana1/captura1.pmg.png' | relative_url }})
 
+<img width="1355" height="687" alt="captura1 pmg" src="https://github.com/user-attachments/assets/30b313cd-a2ac-4c3d-9118-ec90272e52b8" />
 ### Captura 2
 ![Captura 2]({{ '/assets/img/semana1/captura2.png' | relative_url }})
 

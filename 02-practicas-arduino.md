@@ -1,112 +1,61 @@
 ---
 layout: default
-title: "Semana 2: Prácticas con Arduino"
+title: "Semana 2: Laboratorio con Arduino"
 nav_order: 3
 ---
 
-# Semana 2: Prácticas con Arduino
+# Semana 2 · Laboratorio con Arduino UNO
 
-## Introducción
+## Panorama general
 
-Durante esta semana se realizaron distintas prácticas con Arduino UNO con el objetivo de conocer el funcionamiento de sus entradas y salidas, así como la forma en la que puede controlar componentes electrónicos por medio de programación en C++. A lo largo de los ejercicios se trabajó con LEDs, botones, un display de 7 segmentos, servomotores y potenciómetros.
+En esta sesión de trabajo se realizaron varias pruebas con Arduino UNO para entender de manera práctica cómo se manejan las entradas y salidas del microcontrolador. Los ejercicios comenzaron con señales digitales sencillas y posteriormente incorporaron botones, condiciones lógicas, un display de siete segmentos, potenciómetros y servomotores.
 
-Las prácticas permitieron relacionar el código con el comportamiento físico de cada circuito, comenzando con ejercicios sencillos de encendido y apagado hasta llegar al control de servomotores mediante entradas analógicas.
+Más que trabajar únicamente con el código, la intención fue observar cómo cada instrucción escrita en Arduino se refleja directamente en el comportamiento del circuito. De esta forma se pudo avanzar desde un simple encendido de LED hasta sistemas con entradas analógicas y control de movimiento.
 
-## ¿Qué es Arduino?
+## Herramientas y componentes
 
-Arduino es una plataforma de desarrollo de hardware y software de código abierto que permite crear prototipos electrónicos de una manera accesible. La placa Arduino UNO incorpora un microcontrolador capaz de recibir información por medio de entradas y controlar distintos dispositivos por medio de salidas digitales o analógicas.
+| Componente | Uso dentro de las prácticas |
+| --- | --- |
+| **Arduino UNO** | Ejecuta los programas y controla las entradas y salidas del circuito. |
+| **Cable USB-A / USB-B** | Permite programar la placa desde la computadora y alimentarla durante las pruebas. |
+| **Protoboard** | Facilita el armado temporal de circuitos sin necesidad de soldar. |
+| **Cables jumper** | Realizan las conexiones entre Arduino y los demás componentes. |
+| **LEDs** | Funcionan como indicadores visuales de los estados HIGH y LOW. |
+| **Resistencias** | Limitan la corriente y ayudan a proteger los LEDs. |
+| **Display de 7 segmentos** | Permite representar números mediante combinaciones de segmentos iluminados. |
+| **Push buttons** | Se utilizan como entradas digitales para controlar distintas acciones. |
+| **Potenciómetros** | Generan valores analógicos variables que Arduino puede interpretar. |
+| **Servomotores de 9 g** | Permiten realizar movimientos controlados en diferentes posiciones angulares. |
+| **Fuente externa** | Proporciona alimentación independiente a los servomotores cuando es necesario. |
 
-Para programar la placa se utiliza Arduino IDE, en donde se escribe un programa conocido como *sketch*. El código se compila para verificar errores y posteriormente se carga al microcontrolador mediante un cable USB.
+<!-- FOTO COMPONENTES 01: placa-arduino-uno.jpg -->
+<!-- FOTO COMPONENTES 02: materiales-laboratorio.jpg -->
+<!-- FOTO COMPONENTES 03: componentes-electronicos.jpg -->
 
-## Componentes utilizados
+## Arduino y el entorno de programación
 
-### Arduino UNO
+Arduino es una plataforma de hardware y software de código abierto utilizada para desarrollar prototipos electrónicos. La placa Arduino UNO incorpora un microcontrolador programable que puede recibir información mediante entradas y controlar dispositivos a través de diferentes salidas.
 
-Placa de desarrollo que contiene el microcontrolador principal y permite ejecutar los programas creados para controlar los circuitos.
+El programa se escribe en Arduino IDE mediante un archivo conocido como *sketch*. Antes de cargarlo a la placa, el código se compila para detectar posibles errores. Una vez verificado, se transfiere mediante USB al microcontrolador para ejecutar las instrucciones.
 
-<!-- AGREGAR AQUÍ IMAGEN: arduino-uno-semana2.jpg -->
+---
 
-### Cable USB-A a USB-B
+# Bloque I · Salidas digitales y temporización
 
-Se utiliza para conectar la placa a la computadora, transferir el programa y suministrar alimentación durante las pruebas.
+En este primer grupo de ejercicios se trabajó principalmente con los estados HIGH y LOW, el uso de `delay()` y el control de uno o varios LEDs.
 
-<!-- AGREGAR AQUÍ IMAGEN: cable-programacion-arduino.jpg -->
+## Práctica 00 · Prueba inicial del LED integrado
 
-### Protoboard
+**Propósito.** Comprobar que la placa Arduino y la carga de programas funcionaran correctamente utilizando el LED que viene integrado en la tarjeta.
 
-Superficie de conexión temporal que permite montar circuitos sin necesidad de soldar los componentes.
+**Material empleado.** Arduino UNO y cable USB.
 
-<!-- AGREGAR AQUÍ IMAGEN: protoboard-practicas.jpg -->
+**Montaje y funcionamiento.** El LED interno fue configurado como salida. Dentro del ciclo principal se alternó su estado cada segundo, generando un parpadeo continuo.
 
-### Cables jumper
+<!-- EVIDENCIA P00: prueba-led-integrado.jpg -->
+<!-- VIDEO P00: demostracion-led-integrado -->
 
-Conductores utilizados para interconectar los pines del Arduino con los componentes colocados en la protoboard.
-
-<!-- AGREGAR AQUÍ IMAGEN: cables-jumper.jpg -->
-
-### LED
-
-Diodo emisor de luz utilizado como salida visual para comprobar los estados HIGH y LOW enviados desde el Arduino.
-
-<!-- AGREGAR AQUÍ IMAGEN: led-electronico.jpg -->
-
-### Resistencias
-
-Elementos empleados para limitar la corriente eléctrica y proteger componentes como los LEDs.
-
-<!-- AGREGAR AQUÍ IMAGEN: resistencias-practica.jpg -->
-
-### Display de 7 segmentos
-
-Dispositivo compuesto por varios segmentos LED que pueden encenderse de manera independiente para representar números.
-
-<!-- AGREGAR AQUÍ IMAGEN: display-siete-segmentos.jpg -->
-
-### Servomotor de 9 g
-
-Motor que puede colocarse en posiciones angulares específicas por medio de señales controladas desde Arduino.
-
-<!-- AGREGAR AQUÍ IMAGEN: servo-9g.jpg -->
-
-### Potenciómetro
-
-Resistencia variable que permite modificar manualmente una señal analógica que posteriormente puede ser interpretada por el Arduino.
-
-<!-- AGREGAR AQUÍ IMAGEN: potenciometro-arduino.jpg -->
-
-### Fuente de alimentación externa
-
-Fuente utilizada para suministrar energía adicional a determinados componentes cuando se requiere una alimentación independiente a la proporcionada directamente por la placa.
-
-<!-- AGREGAR AQUÍ IMAGEN: fuente-externa.jpg -->
-
-### Push button
-
-Interruptor normalmente abierto que cambia su estado eléctrico cuando se presiona y puede utilizarse como una entrada digital.
-
-<!-- AGREGAR AQUÍ IMAGEN: boton-pulsador.jpg -->
-
-# Desarrollo de las prácticas
-
-## Práctica 00 - Comprobación del LED integrado
-
-### Objetivo
-
-Verificar que la placa Arduino se encuentre funcionando correctamente utilizando el LED integrado como primera salida digital.
-
-### Componentes utilizados
-
-- Arduino UNO
-- Cable USB
-
-### Desarrollo
-
-Se configuró el LED incorporado en la placa como salida. El programa cambia su estado cada segundo, generando un parpadeo continuo que permite comprobar que el código fue cargado correctamente.
-
-<!-- AGREGAR AQUÍ IMAGEN: practica00-led-integrado.jpg -->
-<!-- AGREGAR AQUÍ VIDEO: video-practica00-comprobacion-led -->
-
-### Código utilizado
+### Programa
 
 ```cpp
 // C++ code
@@ -125,29 +74,22 @@ void loop()
 }
 ```
 
-### Resultado
+**Observación.** El LED integrado parpadeó cada segundo, indicando que el programa se cargó y ejecutó de forma correcta.
 
-El LED integrado comenzó a parpadear de forma periódica, confirmando el funcionamiento básico de la placa y del programa.
+---
 
-## Práctica 01 - Salida digital permanente en HIGH
+## Práctica 01 · Pin 13 activo
 
-### Objetivo
+**Propósito.** Mantener una salida digital permanentemente en estado HIGH.
 
-Configurar el pin 13 como salida y mantenerlo activado permanentemente.
+**Material empleado.** Arduino UNO y cable USB.
 
-### Componentes utilizados
+**Montaje y funcionamiento.** Se configuró el pin 13 como salida y dentro de `loop()` se mantuvo activo mediante `digitalWrite()`.
 
-- Arduino UNO
-- Cable USB
+<!-- EVIDENCIA P01: salida-digital-high.jpg -->
+<!-- VIDEO P01: pin13-encendido -->
 
-### Desarrollo
-
-En esta práctica se utilizó una salida digital sencilla. El pin 13 fue configurado como OUTPUT y posteriormente se mantuvo en estado HIGH dentro del ciclo principal.
-
-<!-- AGREGAR AQUÍ IMAGEN: practica01-pin13-high.jpg -->
-<!-- AGREGAR AQUÍ VIDEO: video-practica01-salida-high -->
-
-### Código utilizado
+### Programa
 
 ```cpp
 // C++ code
@@ -163,29 +105,22 @@ void loop()
 }
 ```
 
-### Resultado
+**Observación.** El indicador correspondiente al pin 13 permaneció encendido durante toda la ejecución.
 
-El indicador conectado al pin 13 permaneció encendido mientras el programa estuvo ejecutándose.
+---
 
-## Práctica 02 - Salida digital permanente en LOW
+## Práctica 02 · Pin 13 desactivado
 
-### Objetivo
+**Propósito.** Analizar el comportamiento del mismo pin cuando se establece permanentemente en LOW.
 
-Comprobar el comportamiento de una salida digital cuando se mantiene en estado LOW.
+**Material empleado.** Arduino UNO y cable USB.
 
-### Componentes utilizados
+**Montaje y funcionamiento.** Se utilizó nuevamente el pin 13 como salida, pero esta vez se escribió un estado LOW durante todo el ciclo.
 
-- Arduino UNO
-- Cable USB
+<!-- EVIDENCIA P02: salida-digital-low.jpg -->
+<!-- VIDEO P02: pin13-apagado -->
 
-### Desarrollo
-
-El pin 13 se configuró nuevamente como salida, pero en esta ocasión se envió permanentemente un nivel LOW.
-
-<!-- AGREGAR AQUÍ IMAGEN: practica02-pin13-low.jpg -->
-<!-- AGREGAR AQUÍ VIDEO: video-practica02-salida-low -->
-
-### Código utilizado
+### Programa
 
 ```cpp
 // C++ code
@@ -201,29 +136,22 @@ void loop()
 }
 ```
 
-### Resultado
+**Observación.** La salida permaneció apagada mientras el programa estuvo funcionando.
 
-La salida permaneció desactivada durante toda la ejecución del programa.
+---
 
-## Práctica 03 - Uso de retardos con delay
+## Práctica 03 · Control de tiempo con `delay()`
 
-### Objetivo
+**Propósito.** Introducir pausas programadas entre los cambios de una salida digital.
 
-Utilizar la función `delay()` para controlar el tiempo entre cambios de estado de una salida.
+**Material empleado.** Arduino UNO y cable USB.
 
-### Componentes utilizados
+**Montaje y funcionamiento.** El pin 13 cambia entre HIGH y LOW, dejando un intervalo de 1000 milisegundos entre cada modificación.
 
-- Arduino UNO
-- Cable USB
+<!-- EVIDENCIA P03: prueba-funcion-delay.jpg -->
+<!-- VIDEO P03: temporizacion-led -->
 
-### Desarrollo
-
-El programa alterna el pin 13 entre HIGH y LOW. Entre cada cambio se añadió una pausa de 1000 milisegundos.
-
-<!-- AGREGAR AQUÍ IMAGEN: practica03-retardo-delay.jpg -->
-<!-- AGREGAR AQUÍ VIDEO: video-practica03-delay -->
-
-### Código utilizado
+### Programa
 
 ```cpp
 // C++ code
@@ -242,30 +170,22 @@ void loop()
 }
 ```
 
-### Resultado
+**Observación.** La pausa permitió visualizar claramente el cambio periódico entre encendido y apagado.
 
-Se obtuvo un cambio de estado con una pausa de un segundo entre cada encendido y apagado.
+---
 
-## Práctica 04 - Parpadeo de un LED externo
+## Práctica 04 · LED externo intermitente
 
-### Objetivo
+**Propósito.** Aplicar el mismo control digital a un LED conectado físicamente al Arduino.
 
-Controlar un LED conectado externamente a la placa mediante una salida digital.
+**Material empleado.** Arduino UNO, LED y cables jumper.
 
-### Componentes utilizados
+**Montaje y funcionamiento.** Se utilizó una salida digital para encender y apagar el LED externo cada segundo.
 
-- Arduino UNO
-- LED
-- Cables jumper
+<!-- EVIDENCIA P04: montaje-led-externo.jpg -->
+<!-- VIDEO P04: parpadeo-led-externo -->
 
-### Desarrollo
-
-Se conectó un LED al Arduino y se utilizó el mismo principio de alternancia entre HIGH y LOW con una espera de un segundo.
-
-<!-- AGREGAR AQUÍ IMAGEN: practica04-led-externo.jpg -->
-<!-- AGREGAR AQUÍ VIDEO: video-practica04-led-parpadeante -->
-
-### Código utilizado
+### Programa
 
 ```cpp
 // C++ code
@@ -284,32 +204,22 @@ void loop()
 }
 ```
 
-### Resultado
+**Observación.** El LED respondió a los cambios de estado enviados desde la placa.
 
-El LED externo se encendió y apagó de forma repetitiva siguiendo el tiempo establecido en el programa.
+---
 
-## Práctica 05 - LED protegido con resistencia
+## Práctica 05 · LED con resistencia de protección
 
-### Objetivo
+**Propósito.** Incorporar una resistencia al montaje para limitar la corriente del LED.
 
-Incorporar una resistencia al circuito para limitar la corriente que circula por el LED.
+**Material empleado.** Arduino UNO, protoboard, LED, resistencia de 220 Ω y jumpers.
 
-### Componentes utilizados
+**Montaje y funcionamiento.** El LED fue conectado en serie con una resistencia de 220 ohmios y se mantuvo el patrón de parpadeo utilizado previamente.
 
-- Arduino UNO
-- LED
-- Resistencia de 220 ohmios
-- Protoboard
-- Cables jumper
+<!-- EVIDENCIA P05: circuito-led-resistencia.jpg -->
+<!-- VIDEO P05: prueba-led-con-resistencia -->
 
-### Desarrollo
-
-Se montó el LED en la protoboard y se añadió una resistencia de 220 ohmios para limitar la corriente. El programa mantiene el mismo patrón de encendido y apagado del ejercicio anterior.
-
-<!-- AGREGAR AQUÍ IMAGEN: practica05-led-resistencia.jpg -->
-<!-- AGREGAR AQUÍ VIDEO: video-practica05-resistencia-led -->
-
-### Código utilizado
+### Programa
 
 ```cpp
 // C++ code
@@ -328,32 +238,22 @@ void loop()
 }
 ```
 
-### Resultado
+**Observación.** El LED funcionó con normalidad y la resistencia quedó integrada como elemento de protección dentro del circuito.
 
-El LED funcionó de manera intermitente mientras la resistencia permitió protegerlo de una corriente excesiva.
+---
 
-## Práctica 06 - Dos LEDs con encendido alternado
+## Práctica 06 · Secuencia alternada de dos LEDs
 
-### Objetivo
+**Propósito.** Trabajar con dos salidas digitales independientes y producir una secuencia visual.
 
-Controlar dos salidas digitales independientes para encender dos LEDs en diferentes momentos.
+**Material empleado.** Arduino UNO, dos LEDs, dos resistencias, protoboard y jumpers.
 
-### Componentes utilizados
+**Montaje y funcionamiento.** Los pines 13 y 12 fueron configurados como salidas. Primero se activa un LED y después el otro, con intervalos de un segundo.
 
-- Arduino UNO
-- 2 LEDs
-- 2 resistencias
-- Protoboard
-- Cables jumper
+<!-- EVIDENCIA P06: circuito-leds-alternados.jpg -->
+<!-- VIDEO P06: secuencia-dos-leds -->
 
-### Desarrollo
-
-Se utilizaron los pines 13 y 12 como salidas. Primero se activa un LED y después el otro, dejando intervalos de un segundo entre cada cambio.
-
-<!-- AGREGAR AQUÍ IMAGEN: practica06-dos-leds-alternados.jpg -->
-<!-- AGREGAR AQUÍ VIDEO: video-practica06-leds-alternados -->
-
-### Código utilizado
+### Programa
 
 ```cpp
 // C++ code
@@ -377,32 +277,22 @@ void loop()
 }
 ```
 
-### Resultado
+**Observación.** Las dos salidas pudieron controlarse por separado para generar una secuencia alternada.
 
-Los LEDs se activaron uno después del otro, mostrando el control independiente de dos salidas digitales.
+---
 
-## Práctica 07 - LEDs trabajando con la misma frecuencia
+## Práctica 07 · LEDs sincronizados
 
-### Objetivo
+**Propósito.** Observar un circuito en el que los LEDs trabajen siguiendo una misma frecuencia.
 
-Observar el funcionamiento de un circuito con dos LEDs configurados para seguir el mismo ritmo de encendido y apagado.
+**Material empleado.** Arduino UNO, dos LEDs, resistencias, protoboard y jumpers.
 
-### Componentes utilizados
+**Montaje y funcionamiento.** Se mantuvo el circuito con dos LEDs, pero el comportamiento fue ajustado para trabajar con el mismo ritmo de encendido y apagado.
 
-- Arduino UNO
-- 2 LEDs
-- Resistencias
-- Protoboard
-- Cables jumper
+<!-- EVIDENCIA P07: leds-sincronizados.jpg -->
+<!-- VIDEO P07: funcionamiento-leds-simultaneos -->
 
-### Desarrollo
-
-Se mantuvo el circuito con dos LEDs, pero se modificó el comportamiento para que trabajaran con la misma frecuencia. El código base utilizado para la señal se muestra a continuación.
-
-<!-- AGREGAR AQUÍ IMAGEN: practica07-leds-sincronizados.jpg -->
-<!-- AGREGAR AQUÍ VIDEO: video-practica07-leds-sincronizados -->
-
-### Código utilizado
+### Programa
 
 ```cpp
 // C++ code
@@ -421,45 +311,40 @@ void loop()
 }
 ```
 
-### Resultado
+**Observación.** Se visualizó un comportamiento sincronizado entre los elementos del circuito.
 
-El montaje permitió observar dos elementos trabajando con una misma frecuencia de señal.
+---
 
-## Práctica 08 - Activación de un display de 7 segmentos
+# Bloque II · Display y representación numérica
 
-### Objetivo
+En esta parte se utilizaron varias salidas digitales al mismo tiempo para controlar los segmentos de un display.
 
-Controlar individualmente los segmentos de un display utilizando diferentes pines digitales del Arduino.
+## Práctica 08 · Control de un display de 7 segmentos
 
-### Componentes utilizados
+**Propósito.** Identificar y controlar individualmente los segmentos del display desde distintos pines digitales.
 
-- Arduino UNO
-- Display de 7 segmentos
-- Protoboard
-- Cables jumper
+**Material empleado.** Arduino UNO, display de 7 segmentos, protoboard y jumpers.
 
-### Desarrollo
+**Montaje y funcionamiento.** Cada segmento fue asociado a un pin del Arduino. El programa activa las salidas necesarias mediante estados HIGH.
 
-Cada segmento del display fue conectado a un pin distinto. Desde el código se enviaron estados HIGH para activar los segmentos correspondientes.
+<!-- EVIDENCIA P08: conexion-display-7-segmentos.jpg -->
+<!-- VIDEO P08: prueba-display-segmentos -->
 
-<!-- AGREGAR AQUÍ IMAGEN: practica08-display-siete-segmentos.jpg -->
-<!-- AGREGAR AQUÍ VIDEO: video-practica08-display -->
-
-### Código utilizado
+### Programa
 
 ```cpp
 // C++ code
 //
 void setup()
 {
-  pinMode(13, OUTPUT);  //Segmento e
-  pinMode(12, OUTPUT);  //Segmento d
-  pinMode(10, OUTPUT);  //Segmento c
-  pinMode(9, OUTPUT);   //Segmento punto
-  pinMode(7, OUTPUT);   //Segmento b
-  pinMode(6, OUTPUT);   //Segmento a
-  pinMode(5, OUTPUT);   //Segmento f
-  pinMode(4, OUTPUT);   //Segmento g
+  pinMode(13, OUTPUT); //Segmento e
+  pinMode(12, OUTPUT); //Segmento d
+  pinMode(10, OUTPUT); //Segmento c
+  pinMode(9, OUTPUT);  //Segmento punto
+  pinMode(7, OUTPUT);  //Segmento b
+  pinMode(6, OUTPUT);  //Segmento a
+  pinMode(5, OUTPUT);  //Segmento f
+  pinMode(4, OUTPUT);  //Segmento g
 }
 
 void loop()
@@ -476,45 +361,36 @@ void loop()
 }
 ```
 
-### Resultado
+**Observación.** La práctica ayudó a reconocer que cada segmento puede ser manejado como una salida independiente.
 
-El display respondió a las señales enviadas por los pines digitales, permitiendo comprobar cómo se controla cada segmento de manera individual.
+---
 
-## Práctica 09 - Secuencia numérica en display
+## Práctica 09 · Secuencia de números en el display
 
-### Objetivo
+**Propósito.** Crear diferentes combinaciones de salidas para representar una pequeña secuencia numérica.
 
-Programar varios patrones de encendido para representar números consecutivos en el display.
+**Material empleado.** Arduino UNO, display de 7 segmentos, protoboard y jumpers.
 
-### Componentes utilizados
+**Montaje y funcionamiento.** Se programaron patrones para los números 0, 1 y 2 utilizando diferentes combinaciones de HIGH y LOW. En el montaje original algunas conexiones no quedaron correctamente realizadas.
 
-- Arduino UNO
-- Display de 7 segmentos
-- Protoboard
-- Cables jumper
+<!-- EVIDENCIA P09: secuencia-numerica-display.jpg -->
+<!-- VIDEO P09: contador-display-prueba -->
 
-### Desarrollo
-
-Se programaron diferentes combinaciones de estados HIGH y LOW para representar una secuencia. En el código se incluyen los patrones correspondientes a los números 0, 1 y 2. Durante el montaje original las conexiones no quedaron completamente correctas.
-
-<!-- AGREGAR AQUÍ IMAGEN: practica09-contador-display.jpg -->
-<!-- AGREGAR AQUÍ VIDEO: video-practica09-secuencia-display -->
-
-### Código utilizado
+### Programa
 
 ```cpp
 // C++ code
 //
 void setup()
 {
-  pinMode(13, OUTPUT);  //Segmento e
-  pinMode(12, OUTPUT);  //Segmento d
-  pinMode(10, OUTPUT);  //Segmento c
-  pinMode(9, OUTPUT);   //Segmento punto
-  pinMode(7, OUTPUT);   //Segmento b
-  pinMode(6, OUTPUT);   //Segmento a
-  pinMode(5, OUTPUT);   //Segmento f
-  pinMode(4, OUTPUT);   //Segmento g
+  pinMode(13, OUTPUT); //Segmento e
+  pinMode(12, OUTPUT); //Segmento d
+  pinMode(10, OUTPUT); //Segmento c
+  pinMode(9, OUTPUT);  //Segmento punto
+  pinMode(7, OUTPUT);  //Segmento b
+  pinMode(6, OUTPUT);  //Segmento a
+  pinMode(5, OUTPUT);  //Segmento f
+  pinMode(4, OUTPUT);  //Segmento g
 }
 
 void loop()
@@ -554,32 +430,26 @@ void loop()
 }
 ```
 
-### Resultado
+**Observación.** El ejercicio mostró cómo una combinación de varias salidas permite representar distintos valores en un solo dispositivo.
 
-El ejercicio permitió practicar la creación de patrones de salida para representar distintos números en un mismo dispositivo.
+---
 
-## Práctica 10 - Lectura digital de un botón
+# Bloque III · Entradas digitales y lógica
 
-### Objetivo
+Las siguientes prácticas incorporaron botones como entradas y estructuras condicionales para decidir cuándo encender o apagar las salidas.
 
-Utilizar un botón como entrada digital para controlar directamente un LED.
+## Práctica 10 · Botón como entrada digital
 
-### Componentes utilizados
+**Propósito.** Leer el estado de un botón y utilizar ese valor para controlar un LED.
 
-- Arduino UNO
-- LED
-- Push button
-- Protoboard
-- Cables jumper
+**Material empleado.** Arduino UNO, LED, push button, protoboard y jumpers.
 
-### Desarrollo
+**Montaje y funcionamiento.** El botón fue conectado al pin 8 como entrada y el LED al pin 13 como salida. La lectura obtenida se envía directamente a la salida.
 
-El botón se conectó al pin 8 como entrada y el LED al pin 13 como salida. El valor leído en el botón se envía directamente al LED.
+<!-- EVIDENCIA P10: boton-control-led.jpg -->
+<!-- VIDEO P10: lectura-entrada-digital -->
 
-<!-- AGREGAR AQUÍ IMAGEN: practica10-boton-led.jpg -->
-<!-- AGREGAR AQUÍ VIDEO: video-practica10-entrada-digital -->
-
-### Código utilizado
+### Programa
 
 ```cpp
 // C++ code
@@ -596,32 +466,22 @@ void loop()
 }
 ```
 
-### Resultado
+**Observación.** El LED respondió de acuerdo con el estado detectado en el botón.
 
-El estado del LED cambió de acuerdo con el estado eléctrico detectado en el botón.
+---
 
-## Práctica 11 - Control con dos botones
+## Práctica 11 · Dos botones y dos salidas
 
-### Objetivo
+**Propósito.** Controlar dos LEDs independientes a partir de dos entradas digitales.
 
-Leer dos entradas digitales y utilizarlas para controlar dos LEDs de manera independiente.
+**Material empleado.** Arduino UNO, dos LEDs, dos botones, protoboard y jumpers.
 
-### Componentes utilizados
+**Montaje y funcionamiento.** Cada botón fue asignado a su propia entrada y cada LED a una salida diferente.
 
-- Arduino UNO
-- 2 LEDs
-- 2 push buttons
-- Protoboard
-- Cables jumper
+<!-- EVIDENCIA P11: doble-boton-doble-led.jpg -->
+<!-- VIDEO P11: control-dos-entradas -->
 
-### Desarrollo
-
-Se configuraron dos entradas y dos salidas. Cada botón controla directamente el LED asignado a su respectivo pin.
-
-<!-- AGREGAR AQUÍ IMAGEN: practica11-dos-botones.jpg -->
-<!-- AGREGAR AQUÍ VIDEO: video-practica11-dos-entradas -->
-
-### Código utilizado
+### Programa
 
 ```cpp
 // C++ code
@@ -642,32 +502,22 @@ void loop()
 }
 ```
 
-### Resultado
+**Observación.** Los dos canales funcionaron de manera independiente, cada uno controlado por su propio botón.
 
-Cada botón permitió cambiar el estado de su LED correspondiente de forma independiente.
+---
 
-## Práctica 12 - Condición lógica con un botón
+## Práctica 12 · Decisión mediante `if`
 
-### Objetivo
+**Propósito.** Utilizar una estructura condicional para interpretar el estado de una entrada.
 
-Aplicar una estructura condicional para tomar decisiones a partir de una entrada digital.
+**Material empleado.** Arduino UNO, LED, botón, protoboard y jumpers.
 
-### Componentes utilizados
+**Montaje y funcionamiento.** El programa revisa el pin 8. Si el botón entrega HIGH, el LED se enciende; si entrega LOW, se apaga.
 
-- Arduino UNO
-- LED
-- Push button
-- Protoboard
-- Cables jumper
+<!-- EVIDENCIA P12: condicion-if-boton.jpg -->
+<!-- VIDEO P12: prueba-estructura-condicional -->
 
-### Desarrollo
-
-El programa comprueba el estado del botón. Si la entrada se encuentra en HIGH, el LED se enciende; si se encuentra en LOW, se apaga.
-
-<!-- AGREGAR AQUÍ IMAGEN: practica12-condicion-boton.jpg -->
-<!-- AGREGAR AQUÍ VIDEO: video-practica12-condicion-if -->
-
-### Código utilizado
+### Programa
 
 ```cpp
 // C++ code
@@ -691,32 +541,22 @@ void loop()
 }
 ```
 
-### Resultado
+**Observación.** Se comprobó que Arduino puede tomar decisiones a partir del valor recibido en una entrada.
 
-Se comprobó el uso de `if` y `else if` para controlar una salida según el valor recibido en una entrada.
+---
 
-## Práctica 13 - Dos entradas con estructuras condicionales
+## Práctica 13 · Dos condiciones independientes
 
-### Objetivo
+**Propósito.** Aplicar dos estructuras condicionales dentro de un mismo programa.
 
-Controlar dos LEDs mediante dos botones utilizando condiciones independientes.
+**Material empleado.** Arduino UNO, dos LEDs, dos botones, protoboard y jumpers.
 
-### Componentes utilizados
+**Montaje y funcionamiento.** Cada botón es evaluado por separado y controla el estado del LED asociado a su entrada.
 
-- Arduino UNO
-- 2 LEDs
-- 2 push buttons
-- Protoboard
-- Cables jumper
+<!-- EVIDENCIA P13: doble-condicion-arduino.jpg -->
+<!-- VIDEO P13: dos-condiciones-digitales -->
 
-### Desarrollo
-
-Cada entrada es evaluada mediante su propia estructura condicional. De esta forma, cada LED puede encenderse o apagarse de acuerdo con su botón correspondiente.
-
-<!-- AGREGAR AQUÍ IMAGEN: practica13-dos-condiciones.jpg -->
-<!-- AGREGAR AQUÍ VIDEO: video-practica13-doble-condicion -->
-
-### Código utilizado
+### Programa
 
 ```cpp
 // C++ code
@@ -752,32 +592,22 @@ void loop()
 }
 ```
 
-### Resultado
+**Observación.** Fue posible evaluar dos entradas y modificar dos salidas dentro del mismo ciclo de ejecución.
 
-El programa pudo evaluar dos entradas distintas y controlar de forma independiente las dos salidas.
+---
 
-## Práctica 14 - Operador lógico OR
+## Práctica 14 · Condición lógica OR
 
-### Objetivo
+**Propósito.** Representar mediante programación el comportamiento de una condición OR.
 
-Implementar una condición OR utilizando dos botones como entradas digitales.
+**Material empleado.** Arduino UNO, LED, dos botones, protoboard y jumpers.
 
-### Componentes utilizados
+**Montaje y funcionamiento.** El LED se activa cuando cualquiera de los dos botones, o ambos, se encuentran en HIGH. Solo permanece apagado cuando las dos entradas están inactivas.
 
-- Arduino UNO
-- LED
-- 2 push buttons
-- Protoboard
-- Cables jumper
+<!-- EVIDENCIA P14: circuito-logica-or.jpg -->
+<!-- VIDEO P14: demostracion-operador-or -->
 
-### Desarrollo
-
-El LED se enciende cuando por lo menos uno de los dos botones se encuentra activo. La salida solamente se apaga cuando ninguno de los botones cumple la condición.
-
-<!-- AGREGAR AQUÍ IMAGEN: practica14-operador-or.jpg -->
-<!-- AGREGAR AQUÍ VIDEO: video-practica14-logica-or -->
-
-### Código utilizado
+### Programa
 
 ```cpp
 // C++ code
@@ -804,32 +634,22 @@ void loop()
 }
 ```
 
-### Resultado
+**Observación.** El comportamiento obtenido coincidió con la lógica OR: basta con una entrada activa para obtener una salida activa.
 
-La práctica permitió comprobar el funcionamiento del operador lógico OR dentro de una condición programada.
+---
 
-## Práctica 15 - Operador lógico AND
+## Práctica 15 · Condición lógica AND
 
-### Objetivo
+**Propósito.** Implementar mediante código el comportamiento de una condición AND.
 
-Implementar una condición AND utilizando dos botones.
+**Material empleado.** Arduino UNO, LED, dos botones, protoboard y jumpers.
 
-### Componentes utilizados
+**Montaje y funcionamiento.** El programa exige que ambos botones se encuentren en HIGH al mismo tiempo para encender el LED.
 
-- Arduino UNO
-- LED
-- 2 push buttons
-- Protoboard
-- Cables jumper
+<!-- EVIDENCIA P15: circuito-logica-and.jpg -->
+<!-- VIDEO P15: demostracion-operador-and -->
 
-### Desarrollo
-
-A diferencia del ejercicio anterior, el LED solo se activa cuando ambos botones se encuentran presionados al mismo tiempo.
-
-<!-- AGREGAR AQUÍ IMAGEN: practica15-operador-and.jpg -->
-<!-- AGREGAR AQUÍ VIDEO: video-practica15-logica-and -->
-
-### Código utilizado
+### Programa
 
 ```cpp
 // C++ code
@@ -856,33 +676,22 @@ void loop()
 }
 ```
 
-### Resultado
+**Observación.** La salida solo se activó cuando las dos condiciones fueron verdaderas simultáneamente.
 
-El LED únicamente se encendió cuando se cumplió simultáneamente el estado HIGH en las dos entradas.
+---
 
-## Práctica 16 - Contador visual con LEDs
+## Práctica 16 · Contador representado con LEDs
 
-### Objetivo
+**Propósito.** Crear una variable de conteo controlada por botón y representarla mediante cuatro LEDs.
 
-Crear un contador que incremente con cada pulsación y represente el valor utilizando cuatro LEDs.
+**Material empleado.** Arduino UNO, cuatro LEDs, resistencias, un botón, protoboard y jumpers.
 
-### Componentes utilizados
+**Montaje y funcionamiento.** La variable `cuenta` aumenta con cada pulsación. Dependiendo de su valor se enciende una cantidad determinada de LEDs. Después del cuarto nivel, la variable regresa a cero.
 
-- Arduino UNO
-- 4 LEDs
-- Resistencias
-- Push button
-- Protoboard
-- Cables jumper
+<!-- EVIDENCIA P16: contador-cuatro-leds.jpg -->
+<!-- VIDEO P16: demostracion-contador-led -->
 
-### Desarrollo
-
-Se creó una variable llamada `cuenta` que aumenta cada vez que se detecta una pulsación. Dependiendo de su valor se enciende una cantidad diferente de LEDs. Al llegar a cinco, la cuenta regresa a cero.
-
-<!-- AGREGAR AQUÍ IMAGEN: practica16-contador-leds.jpg -->
-<!-- AGREGAR AQUÍ VIDEO: video-practica16-contador-visual -->
-
-### Código utilizado
+### Programa
 
 ```cpp
 // C++ code
@@ -950,30 +759,26 @@ void loop()
 }
 ```
 
-### Resultado
+**Observación.** Los LEDs permitieron visualizar de forma sencilla el avance de la variable de conteo.
 
-Cada pulsación incrementó la cuenta y produjo una representación visual progresiva mediante los LEDs.
+---
 
-## Práctica 17 - Posición fija de un servomotor
+# Bloque IV · Servomotores y entradas analógicas
 
-### Objetivo
+El último conjunto de prácticas se enfocó en controlar movimiento. Se utilizó la librería `Servo.h` y posteriormente se incorporaron potenciómetros para transformar lecturas analógicas en posiciones angulares.
 
-Realizar la primera prueba de control de posición de un servomotor utilizando la librería `Servo.h`.
+## Práctica 17 · Primera posición del servomotor
 
-### Componentes utilizados
+**Propósito.** Realizar una prueba inicial de posicionamiento utilizando la librería para servomotores.
 
-- Arduino UNO
-- Servomotor de 9 g
-- Cables jumper
+**Material empleado.** Arduino UNO, servomotor de 9 g y jumpers.
 
-### Desarrollo
+**Montaje y funcionamiento.** El servomotor se conectó al pin 9. Después de inicializarlo mediante `attach()`, el programa envía una posición de 90 grados.
 
-Se agregó la librería de control para servomotores, se asignó el servo al pin 9 y se estableció una posición fija. En el código utilizado la posición indicada es de 90 grados.
+<!-- EVIDENCIA P17: prueba-inicial-servo.jpg -->
+<!-- VIDEO P17: primera-posicion-servo -->
 
-<!-- AGREGAR AQUÍ IMAGEN: practica17-servo-posicion-fija.jpg -->
-<!-- AGREGAR AQUÍ VIDEO: video-practica17-prueba-servo -->
-
-### Código utilizado
+### Programa
 
 ```cpp
 // C++ code
@@ -996,30 +801,22 @@ void loop()
 }
 ```
 
-### Resultado
+**Observación.** El servomotor se desplazó hasta la posición indicada por el programa.
 
-El servomotor respondió a la instrucción y se colocó en el ángulo definido dentro del programa.
+---
 
-## Práctica 18 - Secuencia de posiciones del servomotor
+## Práctica 18 · Recorrido automático del servomotor
 
-### Objetivo
+**Propósito.** Programar una secuencia automática de diferentes posiciones angulares.
 
-Mover automáticamente el servomotor entre diferentes posiciones angulares.
+**Material empleado.** Arduino UNO, servomotor de 9 g y jumpers.
 
-### Componentes utilizados
+**Montaje y funcionamiento.** El servo se mueve entre 0°, 90° y 180°, esperando un segundo en cada una de las posiciones antes de continuar.
 
-- Arduino UNO
-- Servomotor de 9 g
-- Cables jumper
+<!-- EVIDENCIA P18: recorrido-servo-0180.jpg -->
+<!-- VIDEO P18: secuencia-angular-servo -->
 
-### Desarrollo
-
-Se programó una secuencia de tres posiciones: 0°, 90° y 180°. Entre cada movimiento se añadió una espera de un segundo.
-
-<!-- AGREGAR AQUÍ IMAGEN: practica18-secuencia-servo.jpg -->
-<!-- AGREGAR AQUÍ VIDEO: video-practica18-recorrido-servo -->
-
-### Código utilizado
+### Programa
 
 ```cpp
 // C++ code
@@ -1047,32 +844,22 @@ void loop()
 }
 ```
 
-### Resultado
+**Observación.** El motor realizó el recorrido programado y repitió la secuencia continuamente.
 
-El servomotor recorrió las tres posiciones programadas y repitió la secuencia de manera continua.
+---
 
-## Práctica 19 - Servomotor controlado con potenciómetro
+## Práctica 19 · Potenciómetro como control del servo
 
-### Objetivo
+**Propósito.** Relacionar una lectura analógica con una posición angular del servomotor.
 
-Utilizar una entrada analógica para controlar directamente la posición angular de un servomotor.
+**Material empleado.** Arduino UNO, servomotor, potenciómetro, protoboard y jumpers.
 
-### Componentes utilizados
+**Montaje y funcionamiento.** Arduino obtiene del pin A0 una lectura entre 0 y 1023. La función `map()` transforma ese intervalo a un rango entre 0 y 180 grados para controlar la posición del servo.
 
-- Arduino UNO
-- Servomotor de 9 g
-- Potenciómetro
-- Protoboard
-- Cables jumper
+<!-- EVIDENCIA P19: servo-control-potenciometro.jpg -->
+<!-- VIDEO P19: control-manual-servo -->
 
-### Desarrollo
-
-El valor del potenciómetro se lee mediante la entrada A0. Como la lectura analógica se encuentra entre 0 y 1023, la función `map()` convierte ese intervalo a valores comprendidos entre 0 y 180 grados.
-
-<!-- AGREGAR AQUÍ IMAGEN: practica19-servo-potenciometro.jpg -->
-<!-- AGREGAR AQUÍ VIDEO: video-practica19-control-analogico-servo -->
-
-### Código utilizado
+### Programa
 
 ```cpp
 // C++ code
@@ -1096,32 +883,22 @@ void loop()
 }
 ```
 
-### Resultado
+**Observación.** El giro del potenciómetro produjo cambios en la posición del servomotor.
 
-La posición del servomotor cambió de acuerdo con el movimiento realizado sobre el potenciómetro.
+---
 
-## Práctica 20 - Dos servomotores controlados por un potenciómetro
+## Práctica 20 · Dos servos con una sola entrada analógica
 
-### Objetivo
+**Propósito.** Utilizar un único potenciómetro para controlar simultáneamente dos servomotores.
 
-Controlar simultáneamente dos servomotores utilizando una sola señal analógica.
+**Material empleado.** Arduino UNO, dos servomotores, potenciómetro, protoboard y jumpers.
 
-### Componentes utilizados
+**Montaje y funcionamiento.** El valor leído en A0 es convertido a grados y enviado a ambos servos, por lo que los dos reciben la misma referencia de posición.
 
-- Arduino UNO
-- 2 servomotores
-- Potenciómetro
-- Protoboard
-- Cables jumper
+<!-- EVIDENCIA P20: doble-servo-un-control.jpg -->
+<!-- VIDEO P20: dos-servos-un-potenciometro -->
 
-### Desarrollo
-
-Una sola lectura analógica se convierte a grados mediante `map()`. Posteriormente, el mismo valor de posición se envía a ambos servomotores.
-
-<!-- AGREGAR AQUÍ IMAGEN: practica20-dos-servos-un-potenciometro.jpg -->
-<!-- AGREGAR AQUÍ VIDEO: video-practica20-doble-servo -->
-
-### Código utilizado
+### Programa
 
 ```cpp
 // C++ code
@@ -1148,32 +925,22 @@ void loop()
 }
 ```
 
-### Resultado
+**Observación.** Ambos servomotores reaccionaron al movimiento del mismo potenciómetro.
 
-Los dos servomotores respondieron al mismo potenciómetro y se desplazaron utilizando un valor común de posición.
+---
 
-## Práctica 21 - Dos servomotores con control independiente
+## Práctica 21 · Control independiente de dos servomotores
 
-### Objetivo
+**Propósito.** Controlar cada servomotor mediante una entrada analógica diferente.
 
-Controlar dos servomotores de forma independiente utilizando dos potenciómetros.
+**Material empleado.** Arduino UNO, dos servomotores, dos potenciómetros, protoboard y jumpers.
 
-### Componentes utilizados
+**Montaje y funcionamiento.** Se realizaron lecturas separadas en A0 y A1. Cada valor se convirtió a un rango de 0° a 180° y se envió al servomotor correspondiente.
 
-- Arduino UNO
-- 2 servomotores
-- 2 potenciómetros
-- Protoboard
-- Cables jumper
+<!-- EVIDENCIA P21: servos-control-independiente.jpg -->
+<!-- VIDEO P21: dos-potenciometros-dos-servos -->
 
-### Desarrollo
-
-Se realizaron dos lecturas analógicas distintas, una desde A0 y otra desde A1. Cada lectura se convirtió a un ángulo y se envió al servomotor correspondiente.
-
-<!-- AGREGAR AQUÍ IMAGEN: practica21-dos-servos-dos-potenciometros.jpg -->
-<!-- AGREGAR AQUÍ VIDEO: video-practica21-control-independiente -->
-
-### Código utilizado
+### Programa
 
 ```cpp
 // C++ code
@@ -1206,33 +973,22 @@ void loop()
 }
 ```
 
-### Resultado
+**Observación.** Cada servo pudo modificarse de manera independiente mediante su propio potenciómetro.
 
-Cada potenciómetro permitió modificar la posición de su servomotor correspondiente de manera independiente.
+---
 
-## Práctica 22 - Alimentación externa para servomotores
+## Práctica 22 · Servomotores con alimentación externa
 
-### Objetivo
+**Propósito.** Probar una fuente de energía independiente para los servomotores manteniendo el control desde Arduino.
 
-Utilizar una fuente externa para alimentar los servomotores sin depender únicamente de la energía suministrada por el Arduino.
+**Material empleado.** Arduino UNO, dos servomotores, potenciómetro, fuente externa, protoboard y jumpers.
 
-### Componentes utilizados
+**Montaje y funcionamiento.** Las líneas de alimentación de los servomotores se conectaron a una fuente externa, mientras que Arduino continuó generando la señal encargada de definir su posición.
 
-- Arduino UNO
-- 2 servomotores
-- Potenciómetro
-- Fuente de alimentación externa
-- Protoboard
-- Cables jumper
+<!-- EVIDENCIA P22: alimentacion-externa-servos.jpg -->
+<!-- VIDEO P22: prueba-fuente-externa-servo -->
 
-### Desarrollo
-
-Se mantuvo el control de los servomotores desde el Arduino, pero su alimentación se conectó a una fuente externa por medio de las líneas de Vcc y GND. El control de posición continúa realizándose con la lectura del potenciómetro.
-
-<!-- AGREGAR AQUÍ IMAGEN: practica22-fuente-externa-servo.jpg -->
-<!-- AGREGAR AQUÍ VIDEO: video-practica22-alimentacion-externa -->
-
-### Código utilizado
+### Programa
 
 ```cpp
 // C++ code
@@ -1259,14 +1015,14 @@ void loop()
 }
 ```
 
-### Resultado
+**Observación.** Se mantuvo el control de posición desde Arduino mientras los servomotores recibían energía desde una fuente diferente.
 
-La práctica permitió comprobar una forma diferente de alimentar los servomotores mientras el Arduino continúa enviando las señales de control.
+---
 
-# Conclusión
+# Cierre de la práctica
 
-Las prácticas realizadas durante la semana permitieron comprender de forma progresiva varias de las funciones fundamentales de Arduino UNO. Primero se trabajó con salidas digitales y retardos, posteriormente se incorporaron entradas mediante botones y condiciones lógicas, y finalmente se utilizaron entradas analógicas para controlar servomotores.
+A lo largo de estos ejercicios se pasó de utilizar instrucciones digitales muy básicas a combinar entradas, condiciones, lecturas analógicas y actuadores. Esto permitió entender mejor la relación que existe entre la programación y el funcionamiento físico de un circuito electrónico.
 
-El desarrollo de estos ejercicios ayudó a relacionar la programación con el comportamiento real de los circuitos. También permitió practicar el uso de funciones como `pinMode()`, `digitalWrite()`, `digitalRead()`, `analogRead()`, `delay()` y `map()`, además del uso de la librería `Servo.h`.
+Entre las instrucciones más utilizadas estuvieron `pinMode()`, `digitalWrite()`, `digitalRead()`, `delay()`, `analogRead()` y `map()`. También se trabajó con la librería `Servo.h`, necesaria para controlar la posición de los servomotores.
 
-En conjunto, estas prácticas sirven como base para desarrollar proyectos de mayor complejidad en los que sea necesario leer sensores, tomar decisiones mediante código y controlar distintos actuadores electrónicos.
+Estas prácticas sirven como una base para proyectos posteriores, ya que reúnen conceptos esenciales para leer señales, procesar condiciones y controlar diferentes dispositivos desde un microcontrolador.
